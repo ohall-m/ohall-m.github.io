@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  
+    <head>Test Website</head>
+    <body>
+       <h1>Test Geolocation Get Current Position</h1>
+       <button id="getLocButton" type="button" onclick="getPosition()">Get Current Position</button> 
+       <ul id="locations">
+       </ul>
+    </body>
+</html> 
+
+<script>
+
+  const geolocationOptions = {
+    enableHighAccuracy: true,
+  };
+
+  function success(pos) {
+    const crd = pos.coords;
+    const ul = document.getElementById('locations');
+    let li = document.createElement('li');
+    li.innerHTML = `Lat: ${crd.latitude} Lon: ${crd.longitude} Acc: ${crd.accuracy}`;
+    ul.appendChild(li);
+  }
+
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+
+  function getPosition(){
+    console.log("Get Current Position");
+    navigator.geolocation.getCurrentPosition(success, error, geolocationOptions);
+  }
+</script>
