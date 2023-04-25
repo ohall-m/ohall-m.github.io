@@ -1,0 +1,76 @@
+  <!doctype html>
+  <html>
+
+    <head>
+      <meta charset="utf-8" content="width=device-width, height=device-height">
+      <title>Simple Print Media Query</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <style>
+    .box {
+        height: 50vh;
+        width: 50vw;
+    }
+    @media screen {
+      .background{
+          background-color: rgb(0, 0, 255);
+          color-adjust: exact;
+      }
+      .only-print {
+        display: none !important;
+      }
+    }
+    @media print {
+      .background{
+          background-color: rgb(255, 113, 57);
+          color-adjust: exact;
+      }
+      .no-print, .no-print * {
+          display: none !important;
+      }
+    }
+  </style>
+<div class="container">
+  <h1 class="pt-4 ">Printing CSS Included</h1>
+  <div class="alert alert-primary no-print" role="alert">
+    Just a banner that will hide when printing due to CSS media queries
+  </div>
+
+  <h2 class="no-print">Print</h2>
+  <div class="no-print row" >
+    <div class="col-6 no-print">
+      <button class="btn btn-primary btn-lg" onclick="window.print();">Print Page</button>
+    </div>
+    </div>
+
+  <h2>Info</h2>
+  <p>
+    This is a simple print test. There are some CSS media queries that change the way the website will appear when printing versus on the screen!
+  </p>
+
+  <p>This is the ideal way to print!</p>
+  <p class="only-print">
+    Notice a lot of things changed in the print layout to optimize for printing. The banner was removed, as well as the print button, and some thins appeared.
+  </p>
+
+  <h2 class="only-print">List Only Appears in Print</h2>
+  <p class="only-print">The list is set to only appear during printing.</p>
+  <ul class="only-print">
+    <li>Print List 1</li>
+    <li>Print List 2</li>
+    <li>Print List 3</li>
+  </ul> 
+
+
+  <h2>Print CSS Media Query Box</h2>
+  <p>
+    The box below has a <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Printing#using_media_queries_to_improve_layout">print css media</a> query. 
+  </p>
+  <p>
+    It will appear blue on screen and orange in print.
+  </p>
+  <div id="content" class="box background">
+  </div>
+
+</div>
+</html>
