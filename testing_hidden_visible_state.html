@@ -1,0 +1,19 @@
+<!doctype html>
+<script>
+  window.onload = function(){
+    window.setInterval(checkDocumentHidden,1000);
+  };
+  
+  function checkDocumentHidden(){
+    const ul = document.getElementById('states');
+    let li = document.createElement('li');
+    li.innerHTML = `document.hidden = ${document.hidden} document.visibilityState: ${document.visibilityState}`;
+    ul.appendChild(li);
+  
+  }
+</script>
+
+<h1>Bug 1678103</h1>
+  <div id="content">
+    <ul id="states"></ul>
+  </div>
